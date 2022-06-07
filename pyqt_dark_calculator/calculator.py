@@ -64,12 +64,12 @@ class Calculator(QMainWindow):
     def __initBtn(self):
         self.__btns = self.__numpadWidget.getBtns()
         for btn in self.__btns:
-            btn.padBtnClicked.connect(self.__btnClicked)
+            btn.padBtnClicked.connect(self._btnClicked)
 
     def __new(self):
         self.newClicked.emit()
 
-    def __btnClicked(self, text):
+    def _btnClicked(self, text):
         line_edit_text = self.__inputLineEdit.text()
         last_n = self.__inputLineEdit.getLastOperand()
         if text == 'Del':
@@ -120,6 +120,18 @@ class Calculator(QMainWindow):
         last_n = self.__inputLineEdit.getLastOperand()
         if last_n:
             self.__showResult(text)
+
+    def getResult(self):
+        text = self.__inputLineEdit.text()
+        formula_text = str(text)
+        value_number = eval(str(text))
+        value_text = str(value_number)
+        if isinstance(value_number, int):
+            pass
+        else:
+            if value_number.is_integer():
+                value_text = '{0:0.0f}'.format(value_number)
+        return value_text
 
     def __showResult(self, text):
         formula_text = str(text)
