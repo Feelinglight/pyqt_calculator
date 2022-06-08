@@ -3,7 +3,7 @@ import os
 from PyQt5.QtWidgets import QWidget, QGridLayout, QSizePolicy
 
 from pyqt_dark_calculator.calculatorPadBtnPushButton import CalculatorPadBtnPushButton
-from pyqt_resource_helper.pyqtResourceHelper import PyQtResourceHelper
+#from pyqt_resource_helper.pyqtResourceHelper import PyQtResourceHelper
 
 
 class CalculatorPadWidget(QWidget):
@@ -27,7 +27,7 @@ class CalculatorPadWidget(QWidget):
                 btn.setToolTip(btn_tooltips[tooltips_idx])
                 tooltips_idx += 1
 
-            PyQtResourceHelper.setStyleSheet([btn], ['style/calculator_pad_button.css'])
+            #PyQtResourceHelper.setStyleSheet([btn], ['style/calculator_pad_button.css'])
             self.__number_btns.append(btn)
 
         gridLayout = QGridLayout()
