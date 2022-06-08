@@ -1,3 +1,15 @@
+calc*.tar.gz
+calc*.tar.xz
+calc*.changes
+calc*.buildinfo
+calc*.dsc
+calc*.deb
+
+pyqt_dark_calculator/debian/.debhelper/
+pyqt_dark_calculator/debian/calc/
+pyqt_dark_calculator/debian/calc.substvars
+pyqt_dark_calculator/debian/files
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
