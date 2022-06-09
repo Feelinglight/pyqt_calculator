@@ -20,9 +20,9 @@ if __name__ == "__main__":
         # 'C:\\Windows\\System32\\ucrtbased.dll',
     ]
 
-    py_build.build_app(a_main_filename="pyqt_dark_calculator/calculator.py",
+    py_build.build_app(a_main_filename="calculator.py",
                         a_app_info=app_info,
-                        a_distpath="./bin",
+                        a_distpath="../bin",
                         a_noconsole=False,
                         a_one_file=True,
                         a_libs=libs)
