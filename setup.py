@@ -11,6 +11,9 @@ setup(
                   'pyqt_dark_calculator.style': ['calculator_pad_button.css']},
     description='PyQt dark calculator',
     url='https://github.com/yjg30737/pyqt-dark-calculator.git',
+    setup_requires=[
+        'wheel>=0.34.2'
+    ],
     install_requires=[
         'PyQt5>=5.15',
         'pyqt-style-setter>=0.0.1',
