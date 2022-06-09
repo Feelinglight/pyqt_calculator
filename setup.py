@@ -15,6 +15,7 @@ setup(
         'wheel>=0.34.2'
     ],
     install_requires=[
+        'pyinstaller>=5.1',
         'PyQt5>=5.15',
         'pyqt-style-setter>=0.0.1',
         'pyqt-resource-helper>=0.0.1',
