@@ -30,9 +30,12 @@ pipeline {
                             }
                         }
                         steps {
-                            withPythonEnv('python3') {
-                                sh 'pip install .'
+                            environment {
+                                HOME = "${env.WORKSPACE}"
                             }
+//                             withPythonEnv('python3') {
+                            sh 'pip install .'
+//                             }
                         }
                     }
                     
