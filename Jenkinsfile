@@ -17,13 +17,13 @@ pipeline {
                 }
 
                  stages {
-//                     agent {
-//                         docker {
-//                             label 'docker'
-//                             image "${DOCKER_IMAGE}"
-//                         }
-//                     }
-//
+                     agent {
+                         docker {
+                             label 'docker'
+                             image "${DOCKER_IMAGE}"
+                         }
+                     }
+
                      stage('Clone repo') {
                          steps {
                              git branch: 'master', url: 'https://github.com/Feelinglight/pyqt_calculator/'
