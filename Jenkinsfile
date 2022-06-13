@@ -11,16 +11,9 @@ pipeline {
                         dir 'dockerfiles'
                         label 'docker'
 //                         additionalBuildArgs  "-t ${DOCKER_IMAGE}"
-                        args '-v /tmp:/tmp'
+//                         args '-v /tmp:/tmp'
                     }
                 }
-
-//                     agent {
-//                         docker {
-//                             label 'docker'
-//                             image "${DOCKER_IMAGE}"
-//                         }
-//                     }
 
                 axes {
                     axis {
@@ -30,13 +23,28 @@ pipeline {
                 }
 
                 stages {
-
-
-//                     stage('Clone repo') {
-//                         steps {
-//                             git branch: 'master', url: 'https://github.com/Feelinglight/pyqt_calculator/'
-//                         }
-//                     }
+                    stage("Install common dependencies") {
+                        when { 
+                            anyOf {
+                                environment name: 'DOCKER_IMAGE', value: 'ubuntu_20' 
+                            }
+                        }
+                        steps {
+                            echo "INSTALL COMMON"
+                        }
+                    }
+                    
+                    stage("Install custom dependencies (${DOCKER_IMAGE})") {
+                        when { 
+                            anyOf {
+                                environment name: 'DOCKER_IMAGE', value: 'ubuntu_18' 
+                            }
+                        }
+                        steps {
+                            echo "INSTALL CUSTOM"
+                        }
+                    }
+                    
                     stage('Build') {
                         steps {
                             echo "Do Build for ${DOCKER_IMAGE}"
