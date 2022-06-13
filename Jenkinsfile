@@ -10,13 +10,13 @@ pipeline {
                         dir 'dockerfiles'
                         label 'docker'
                     }
+                    customWorkspace "workspace/${JOB_NAME}/OS/${DOCKER_IMAGE}/" 
                 }
 
                 axes {
                     axis {
                         name 'DOCKER_IMAGE'
                         values 'ubuntu_18', 'ubuntu_20'
-                        customWorkspace "workspace/${JOB_NAME}/OS/${DOCKER_IMAGE}/" 
                     }
                 }
 
