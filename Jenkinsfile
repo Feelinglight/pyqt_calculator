@@ -11,7 +11,7 @@ pipeline {
                         dir 'dockerfiles'
                         label 'docker'
 //                         additionalBuildArgs  "-t ${DOCKER_IMAGE}"
-//                         args '-v /tmp:/tmp'
+                        args '-v /tmp:/tmp'
                     }
                 }
 
@@ -32,15 +32,16 @@ pipeline {
                 stages {
 
 
-                    stage('Clone repo') {
-                        steps {
-                            git branch: 'master', url: 'https://github.com/Feelinglight/pyqt_calculator/'
-                        }
-                    }
+//                     stage('Clone repo') {
+//                         steps {
+//                             git branch: 'master', url: 'https://github.com/Feelinglight/pyqt_calculator/'
+//                         }
+//                     }
                     stage('Build') {
                         steps {
                             echo "Do Build for ${DOCKER_IMAGE}"
                             sh 'ls -la'
+                            sh 'ls /tmp'
 //                             sh 'pip install .'
                         }
                     }
