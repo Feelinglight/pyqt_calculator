@@ -30,7 +30,7 @@ pipeline {
                             }
                         }
                         steps {
-                            echo "INSTALL COMMON"
+                            sh 'pip install .'
                         }
                     }
                     
@@ -41,7 +41,11 @@ pipeline {
                             }
                         }
                         steps {
-                            echo "INSTALL CUSTOM"
+                            sh '''pip3 install --no-deps 
+                            wheel pyinstaller==4.0 
+                            pyqt-new-window-handler absresgetter 
+                            pyqt-resource-helper pyqt-style-setter altgraph
+                            '''
                         }
                     }
                     
