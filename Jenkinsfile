@@ -34,7 +34,7 @@ pipeline {
                         }
                     }
                     
-                    stage("Install custom dependencies (${DOCKER_IMAGE})") {
+                    stage('Install custom dependencies') {
                         when { 
                             anyOf {
                                 environment name: 'DOCKER_IMAGE', value: 'ubuntu_18' 
