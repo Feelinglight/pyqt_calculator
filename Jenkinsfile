@@ -52,11 +52,10 @@ pipeline {
         }
     }
     post {
-        agent {
-            label 'docker'
-        }
         always { 
-            cleanWs()
+            node('docker') {
+                cleanWs()
+            }
         }
     }
 } 
