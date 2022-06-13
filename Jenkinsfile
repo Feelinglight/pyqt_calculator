@@ -44,7 +44,7 @@ pipeline {
                         steps {
                             echo "Do Build for ${DOCKER_IMAGE}"
                             sh 'ls -la'
-                            sh 'python3 build_deb.py'
+//                             sh 'python3 build_deb.py'
                         }
                     }
                  }
@@ -54,7 +54,7 @@ pipeline {
     post {
         always { 
             node('docker') {
-                archiveArtifacts artifacts: './*.deb'
+                archiveArtifacts artifacts: './*.py'
 
 //                 cleanWs()
             }
