@@ -15,7 +15,7 @@ pipeline {
                 axes {
                     axis {
                         name 'DOCKER_IMAGE'
-                        values 'ubuntu_20'
+                        values 'ubuntu_18'
                     }
                 }
 
