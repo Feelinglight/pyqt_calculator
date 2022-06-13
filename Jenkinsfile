@@ -30,9 +30,9 @@ pipeline {
                             }
                         }
                         steps {
-                            sh 'python3 -m venv venv'
-                            sh '. ./venv/bin/activate'
-                            sh 'pip install .'
+                            withPythonEnv('python3') {
+                                sh 'pip install .'
+                            }
                         }
                     }
                     
