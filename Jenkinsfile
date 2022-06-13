@@ -45,8 +45,8 @@ pipeline {
                             echo "Do Test for ${DOCKER_IMAGE}"
                             
                             sh 'ls -la'
+                            sh 'export DISPLAY=:0.0'
                             sh 'pytest pyqt_dark_calculator/tests'
-                            sh 'python3 -m pytest pyqt_dark_calculator/tests'
                         }
                     }
                     stage('Build') {
