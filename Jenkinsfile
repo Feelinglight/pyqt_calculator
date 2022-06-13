@@ -54,7 +54,9 @@ pipeline {
     post {
         always { 
             node('docker') {
-                cleanWs()
+                archiveArtifacts artifacts: './*.deb'
+
+//                 cleanWs()
             }
         }
     }
