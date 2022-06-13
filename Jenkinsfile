@@ -54,9 +54,8 @@ pipeline {
     post {
         always { 
             node('docker') {
-                archiveArtifacts artifacts: '*.py'
-
-//                 cleanWs()
+                archiveArtifacts artifacts: '*.deb'
+                cleanWs()
             }
         }
     }
