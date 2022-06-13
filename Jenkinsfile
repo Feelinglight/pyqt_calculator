@@ -6,7 +6,7 @@ pipeline {
             matrix {
                 node {
                     label 'docker'
-                    def testImage = docker.build("${DOCKER_IMAGE}", "./dockerfiles/Dockerfile.ubuntu_20")
+                    def testImage = docker.build("${DOCKER_IMAGE}", "./dockerfiles/Dockerfile.${DOCKER_IMAGE}")
                 }
 
                 axes {
@@ -16,27 +16,26 @@ pipeline {
                     }
                 }
 
-                 stages {
-                     agent {
-                         docker {
-                             label 'docker'
-                             image "${DOCKER_IMAGE}"
-                         }
-                     }
+                stages {
+                    agent {
+                        docker {
+                            label 'docker'
+                            image "${DOCKER_IMAGE}"
+                        }
+                    }
 
-                     stage('Clone repo') {
-                         steps {
-                             git branch: 'master', url: 'https://github.com/Feelinglight/pyqt_calculator/'
-                         }
-                     }
-                     stage('Build') {
-                         steps {
-                             echo "Do Build for ${DOCKER_IMAGE}"
-                             sh 'ls -la'
-
-                             sh 'pip install .'
-                         }
-                     }
+                    stage('Clone repo') {
+                        steps {
+                            git branch: 'master', url: 'https://github.com/Feelinglight/pyqt_calculator/'
+                        }
+                    }
+                    stage('Build') {
+                        steps {
+                            echo "Do Build for ${DOCKER_IMAGE}"
+                            sh 'ls -la'
+                            sh 'pip install .'
+                        }
+                    }
 //                     stage('Test') {
 //                         steps {
 //                             echo "Do Test for ${DOCKER_IMAGE}"
