@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('BuildTestDeploy') {
             matrix {
-                agent {
+                node {
                     label 'docker'
                     def testImage = docker.build("${DOCKER_IMAGE}", "./dockerfiles/Dockerfile.ubuntu_20")
                 }
