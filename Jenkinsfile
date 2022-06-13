@@ -9,8 +9,8 @@ pipeline {
                         filename "Dockerfile.${DOCKER_IMAGE}"
                         dir 'dockerfiles'
                         label 'docker'
+                        customWorkspace "workspace/${JOB_NAME}/OS/${DOCKER_IMAGE}/" 
                     }
-                    customWorkspace "workspace/${JOB_NAME}/OS/${DOCKER_IMAGE}/" 
                 }
 
                 axes {
