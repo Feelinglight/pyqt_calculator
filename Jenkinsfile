@@ -30,7 +30,9 @@ pipeline {
                             }
                         }
                         steps {
-                            environment name: 'HOME', value: "${env.WORKSPACE}"
+                            environment {
+                                HOME = "${env.WORKSPACE}"
+                            }
                             
                             echo "${HOME}"
                             echo "${USER}"
