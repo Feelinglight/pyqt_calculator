@@ -37,6 +37,7 @@ pipeline {
                             echo "${HOME}"
                             echo "${USER}"
                             echo "${env.WORKSPACE}"
+                            sh 'echo $USER'
                             
 //                             withPythonEnv('python3') {
                             sh 'pip install . --user'
