@@ -40,20 +40,19 @@ pipeline {
                             
 //                         }
 //                     }
-                    
+                    stage('Test') {
+                        steps {
+                            echo "Do Test for ${DOCKER_IMAGE}"
+//                             sh 'python3 -m pytest pyqt_dark_calculator/tests'
+                        }
+                    }
                     stage('Build') {
                         steps {
                             echo "Do Build for ${DOCKER_IMAGE}"
                             sh 'ls -la'
-                            sh 'ls /tmp'
-//                             sh 'pip install .'
+                            sh 'python3 build_deb.py'
                         }
                     }
-//                     stage('Test') {
-//                         steps {
-//                             echo "Do Test for ${DOCKER_IMAGE}"
-//                         }
-//                     }
                  }
             }
         }
