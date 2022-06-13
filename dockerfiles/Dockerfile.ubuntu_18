@@ -8,11 +8,10 @@ RUN apt-get update && \
 
 RUN apt-get install -y python3-pyqt5 zlib1g-dev
 
-RUN pip3 install --no-deps wheel pyinstaller==4.0 pyqt-new-window-handler absresgetter pyqt-resource-helper pyqt-style-setter altgraph
+# RUN pip3 install --no-deps wheel pyinstaller==4.0 pyqt-new-window-handler absresgetter pyqt-resource-helper pyqt-style-setter altgraph
 
-RUN apt-get install -y git && \
-    git clone https://github.com/Feelinglight/pyqt_calculator
+# RUN apt-get install -y git && git clone https://github.com/Feelinglight/pyqt_calculator
 
-WORKDIR /pyqt_calculator
+# WORKDIR /pyqt_calculator
 
-RUN python3 build_deb.py
+# RUN python3 build_deb.py
