@@ -32,6 +32,9 @@ pipeline {
                         steps {
                             environment name: 'HOME', value: "${env.WORKSPACE}"
                             
+                            echo "${HOME}"
+                            echo "${USER}"
+                            
 //                             withPythonEnv('python3') {
                             sh 'pip install .'
 //                             }
