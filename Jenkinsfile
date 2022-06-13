@@ -41,7 +41,7 @@ pipeline {
                         steps {
                             echo "Do Build for ${DOCKER_IMAGE}"
                             sh 'ls -la'
-                            sh 'pip install .'
+//                             sh 'pip install .'
                         }
                     }
 //                     stage('Test') {
