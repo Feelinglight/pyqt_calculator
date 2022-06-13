@@ -16,7 +16,7 @@ pipeline {
                     }
                 }
 
-//                 stages {
+                 stages {
 //                     agent {
 //                         docker {
 //                             label 'docker'
@@ -24,25 +24,25 @@ pipeline {
 //                         }
 //                     }
 //
-//                     stage('Clone repo') {
-//                         steps {
-//                             git branch: 'master', url: 'https://github.com/Feelinglight/pyqt_calculator/'
-//                         }
-//                     }
-//                     stage('Build') {
-//                         steps {
-//                             echo "Do Build for ${DOCKER_IMAGE}"
-//                             sh 'ls -la'
-//
-//                             sh 'pip install .'
-//                         }
-//                     }
+                     stage('Clone repo') {
+                         steps {
+                             git branch: 'master', url: 'https://github.com/Feelinglight/pyqt_calculator/'
+                         }
+                     }
+                     stage('Build') {
+                         steps {
+                             echo "Do Build for ${DOCKER_IMAGE}"
+                             sh 'ls -la'
+
+                             sh 'pip install .'
+                         }
+                     }
 //                     stage('Test') {
 //                         steps {
 //                             echo "Do Test for ${DOCKER_IMAGE}"
 //                         }
 //                     }
-//                 }
+                 }
             }
         }
     }
