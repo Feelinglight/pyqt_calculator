@@ -30,7 +30,7 @@ pipeline {
                             }
                         }
                         steps {
-                            sh 'pip install .'
+                            sh 'pip install . --user'
                         }
                     }
                     
