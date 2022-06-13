@@ -5,13 +5,10 @@ pipeline {
         stage('BuildTestDeploy') {
             matrix {
                 agent {
-                    // Equivalent to "docker build -f Dockerfile.build --build-arg version=1.0.2 ./build/
                     dockerfile {
                         filename "Dockerfile.${DOCKER_IMAGE}"
                         dir 'dockerfiles'
                         label 'docker'
-//                         additionalBuildArgs  "-t ${DOCKER_IMAGE}"
-//                         args '-v /tmp:/tmp'
                     }
                 }
 
@@ -23,45 +20,26 @@ pipeline {
                 }
 
                 stages {
-                    stage("Install common dependencies") {
-                        when { 
-                            anyOf {
-                                environment name: 'DOCKER_IMAGE', value: 'ubuntu_20' 
-                            }
-                        }
-                        steps {
-//                             environment {
-//                                 HOME = "${env.WORKSPACE}"
+//                     stage("Install common dependencies") {
+//                         when { 
+//                             anyOf {
+//                                 environment name: 'DOCKER_IMAGE', value: 'ubuntu_20' 
 //                             }
-                            
-                            echo "${HOME}"
-                            echo "${USER}"
-                            echo "${env.WORKSPACE}"
-                            echo "${USER}"
-                            
-//                             withPythonEnv('python3') {
-//                             sh 'pip install . --user'
-//                             }
-                        }
-                    }
+//                         }
+//                         steps {
+//                         }
+//                     }
                     
-                    stage('Install custom dependencies') {
-                        when { 
-                            anyOf {
-                                environment name: 'DOCKER_IMAGE', value: 'ubuntu_18' 
-                            }
-                        }
-                        steps {
-                            sh 'python3 -m venv venv'
-                            sh '. ./venv/bin/activate'
+//                     stage('Install custom dependencies') {
+//                         when { 
+//                             anyOf {
+//                                 environment name: 'DOCKER_IMAGE', value: 'ubuntu_18' 
+//                             }
+//                         }
+//                         steps {
                             
-                            sh '''pip3 install --no-deps 
-                            wheel pyinstaller==4.0 
-                            pyqt-new-window-handler absresgetter 
-                            pyqt-resource-helper pyqt-style-setter altgraph
-                            '''
-                        }
-                    }
+//                         }
+//                     }
                     
                     stage('Build') {
                         steps {
