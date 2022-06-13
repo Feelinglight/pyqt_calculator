@@ -5,8 +5,14 @@ pipeline {
         stage('BuildTestDeploy') {
             matrix {
                 agent {
-                    label 'docker'
-                    def testImage = docker.build("${DOCKER_IMAGE}", "./dockerfiles/Dockerfile.${DOCKER_IMAGE}")
+                    // Equivalent to "docker build -f Dockerfile.build --build-arg version=1.0.2 ./build/
+                    dockerfile {
+                        filename "Dockerfile.${DOCKER_IMAGE}"
+                        dir 'dockerfiles'
+                        label 'docker'
+                        additionalBuildArgs  "-t ${DOCKER_IMAGE}"
+//                         args '-v /tmp:/tmp'
+                    }
                 }
 
                 axes {
