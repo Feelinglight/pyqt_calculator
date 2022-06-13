@@ -43,6 +43,8 @@ pipeline {
                     stage('Test') {
                         steps {
                             echo "Do Test for ${DOCKER_IMAGE}"
+                            
+                            sh 'ls -la'
                             sh 'python3 -m pytest pyqt_dark_calculator/tests'
                         }
                     }
