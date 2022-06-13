@@ -40,7 +40,7 @@ pipeline {
                             echo "${USER}"
                             
 //                             withPythonEnv('python3') {
-                            sh 'pip install . --user'
+//                             sh 'pip install . --user'
 //                             }
                         }
                     }
