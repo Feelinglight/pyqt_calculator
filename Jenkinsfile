@@ -39,7 +39,7 @@ pipeline {
                             echo "${env.WORKSPACE}"
                             
 //                             withPythonEnv('python3') {
-                            sh 'pip install .'
+                            sh 'pip install . --user'
 //                             }
                         }
                     }
