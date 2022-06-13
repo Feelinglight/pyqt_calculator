@@ -51,7 +51,10 @@ pipeline {
             }
         }
     }
-    post { 
+    post {
+        agent {
+            label 'docker'
+        }
         always { 
             cleanWs()
         }
