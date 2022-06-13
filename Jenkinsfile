@@ -40,24 +40,20 @@ pipeline {
                             
 //                         }
 //                     }
-                    stage('Test') {
-                        steps {
-                            echo "Do Test for ${DOCKER_IMAGE}"
-                            
-                            sh 'ls -la'
-                            sh 'export DISPLAY=:0.0'
-                            sh 'pytest pyqt_dark_calculator/tests'
-                        }
-                    }
                     stage('Build') {
                         steps {
                             echo "Do Build for ${DOCKER_IMAGE}"
                             sh 'ls -la'
-//                             sh 'python3 build_deb.py'
+                            sh 'python3 build_deb.py'
                         }
                     }
                  }
             }
+        }
+    }
+    post { 
+        always { 
+            cleanWs()
         }
     }
 } 
