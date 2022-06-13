@@ -10,10 +10,17 @@ pipeline {
                         filename "Dockerfile.${DOCKER_IMAGE}"
                         dir 'dockerfiles'
                         label 'docker'
-                        additionalBuildArgs  "-t ${DOCKER_IMAGE}"
+//                         additionalBuildArgs  "-t ${DOCKER_IMAGE}"
 //                         args '-v /tmp:/tmp'
                     }
                 }
+
+//                     agent {
+//                         docker {
+//                             label 'docker'
+//                             image "${DOCKER_IMAGE}"
+//                         }
+//                     }
 
                 axes {
                     axis {
@@ -23,12 +30,7 @@ pipeline {
                 }
 
                 stages {
-                    agent {
-                        docker {
-                            label 'docker'
-                            image "${DOCKER_IMAGE}"
-                        }
-                    }
+
 
                     stage('Clone repo') {
                         steps {
