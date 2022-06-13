@@ -30,7 +30,9 @@ pipeline {
                             }
                         }
                         steps {
-                            sh 'pip install . --user'
+                            sh 'python3 -m venv venv'
+                            sh '. ./venv/bin/activate'
+                            sh 'pip install .'
                         }
                     }
                     
@@ -41,6 +43,9 @@ pipeline {
                             }
                         }
                         steps {
+                            sh 'python3 -m venv venv'
+                            sh '. ./venv/bin/activate'
+                            
                             sh '''pip3 install --no-deps 
                             wheel pyinstaller==4.0 
                             pyqt-new-window-handler absresgetter 
